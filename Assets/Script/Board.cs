@@ -184,7 +184,7 @@ public class Board : MonoBehaviour
                 //행 크기
                 int rowCnt = (int)Mathf.Sqrt(size);
                 int rowPosition = i / rowCnt;
-                blankSpaceRow = rowCnt - 1 - rowPosition;
+                blankSpaceRow = rowCnt - rowPosition;
             }
             for(int j = i + 1; j < size; j++) {
                 if (j != blankSpace)
@@ -211,6 +211,37 @@ public class Board : MonoBehaviour
             {
                 Debug.Log("이퍼즐은 풀이가 불가능합니다.. 다시 섞습니다.");
                 StartCoroutine("Shuffle");
+            }
+        }
+        //짝수인 경우
+        else
+        {
+            //빈칸이 아래서부터 짝수번째에 있을 때
+            Debug.Log(blankSpaceRow);
+            if(blankSpaceRow %2 == 0)
+            {
+                //홀수라면
+                if(cnt % 2 != 0)
+                {
+                    Debug.Log("이퍼즐은 풀이가 가능합니다..");
+                }
+                else
+                {
+                    StartCoroutine("Shuffle");
+                }
+            }
+            //빈칸이 아래서부터 홀수번째에 있을 때
+            else
+            {
+                //짝수라면
+                if (cnt % 2 == 0)
+                {
+                    Debug.Log("이퍼즐은 풀이가 가능합니다..");
+                }
+                else
+                {
+                    StartCoroutine("Shuffle");
+                }
             }
         }
     }

@@ -169,7 +169,14 @@ public class Board : MonoBehaviour
         //비어있는 빈칸의 행의 위치
         int blankSpaceRow = -1;
 
-        blankSpace = arr.Where(val => val == boardSize).ToArray()[0];
+        for(int i = 0; i < boardSize; i++)
+        {
+            if(boardSize == arr[i])
+            {
+                blankSpace = i;
+                break;
+            }
+        }
 
         //인버젼 카운트
         int cnt = 0;
@@ -219,7 +226,7 @@ public class Board : MonoBehaviour
         else
         {
             //빈칸이 아래서부터 짝수번째에 있을 때
-            Debug.Log(blankSpaceRow);
+            Debug.Log( "빈칸 행 위치"+ blankSpaceRow);
             if (blankSpaceRow % 2 == 0)
             {
                 //홀수라면

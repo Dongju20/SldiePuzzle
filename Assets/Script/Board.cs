@@ -145,62 +145,64 @@ public class Board : MonoBehaviour
     public void CheckSolveAble()
     {
         int boardSize = this.size * this.size;
-        int []arr = new int[boardSize];
+        int[] arr = new int[boardSize];
 
         Transform[] transforms = this.GetComponentsInChildren<Transform>().Where(t => t != this.transform)
-                             .ToArray(); ;
+                             .ToArray();
+
+        int[] newArr = new int[boardSize - 1];
+
         for (int y = 0; y < this.size; y++)
         {
             for (int x = 0; x < this.size; x++)
             {
-                Tile tile = tileList.Find(tile =>  tile.GetCorrectPosition() == transforms[y * this.size + x].transform.localPosition);
+                Tile tile = tileList.Find(tile => tile.GetCorrectPosition() == transforms[y * this.size + x].transform.localPosition);
                 arr[tile.Numeric - 1] = y * this.size + x + 1;
                 Debug.Log((tile.Numeric) + " " + (y * this.size + x + 1));
             }
         }
 
+        newArr = arr.Where(val => val != boardSize).ToArray();
 
         //빈칸 인덱스 위치..
         int blankSpace = -1;
         //비어있는 빈칸의 행의 위치
         int blankSpaceRow = -1;
 
+        blankSpace = arr.Where(val => val == boardSize).ToArray()[0];
+
         //인버젼 카운트
         int cnt = 0;
         //배열 크기
         int size = arr.Length;
-        for(int i  = 0; i < size; i++)
+        //빈칸 행을 구하는 로직
+        //행 크기
+        int rowCnt = (int)Mathf.Sqrt(size);
+        int rowPosition = blankSpace / rowCnt;
+        blankSpaceRow = rowCnt - rowPosition;
+
+        for (int i = 0; i < size; i++)
         {
             Debug.Log(arr[i]);
         }
-        for(int i = 0; i < size; i++)
+        for (int i = 0; i < boardSize - 1; i++)
         {
-            //만약 빈칸이라면
-            if (arr[i] == size)
+
+            for (int j = i + 1; j < boardSize - 1; j++)
             {
-                //빈칸 위치를 지정한후 홀수 행 혹은 짝수 행인지 검증..
-                blankSpace = i;
-                //빈칸 행을 구하는 로직
-                //행 크기
-                int rowCnt = (int)Mathf.Sqrt(size);
-                int rowPosition = i / rowCnt;
-                blankSpaceRow = rowCnt - rowPosition;
-            }
-            for(int j = i + 1; j < size; j++) {
-                if (j != blankSpace)
+
+                if (newArr[i] > newArr[j])
                 {
-                    if (arr[i] > arr[j])
-                    {
-                        cnt++;
-                    }
+                    cnt++;
                 }
+
             }
         }
         Debug.Log(cnt);
         //check the Puzzle is SolveAble
         //N이 홀수인 경우
         int n = (int)Mathf.Sqrt(size) % 2;
-        if (n!= 0)
+        if (n != 0)
         {
             //홀수라면...
             if (cnt % 2 == 0)
@@ -218,10 +220,10 @@ public class Board : MonoBehaviour
         {
             //빈칸이 아래서부터 짝수번째에 있을 때
             Debug.Log(blankSpaceRow);
-            if(blankSpaceRow %2 == 0)
+            if (blankSpaceRow % 2 == 0)
             {
                 //홀수라면
-                if(cnt % 2 != 0)
+                if (cnt % 2 != 0)
                 {
                     Debug.Log("이퍼즐은 풀이가 가능합니다..");
                 }

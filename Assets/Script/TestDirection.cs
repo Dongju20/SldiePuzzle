@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public class TestDirection : MonoBehaviour
     void Update()
     {
         GameObject[] gameObjects = new GameObject[4];
-        //µ¿ÂÊ ·¹ÀÌÄ³½ºÆÃ
+        //ë™ìª½ ë ˆì´ìºìŠ¤íŒ…
         gameObjects[0] = RaycastInDirection(transform.right);
         gameObjects[1] = RaycastInDirection(-transform.right);
         gameObjects[2] = RaycastInDirection(transform.up);
@@ -23,10 +23,10 @@ public class TestDirection : MonoBehaviour
 
     GameObject RaycastInDirection(Vector3 direction)
     {
-        Debug.Log("ÁÖÀ§Å¸ÀÏ °Ë»ç..");
+        Debug.Log("ì£¼ìœ„íƒ€ì¼ ê²€ì‚¬..");
         RaycastHit hit;
         float rayDistance = 10f;
-        // directionÀ¸·Î ·¹ÀÌÄ³½ºÆ® ¹ß»ç
+        // directionìœ¼ë¡œ ë ˆì´ìºìŠ¤íŠ¸ ë°œì‚¬
         Debug.DrawRay(transform.position, direction * rayDistance, Color.red, 10f);
         if (Physics.Raycast(transform.position, direction, out hit, Mathf.Infinity, LayerMask.GetMask("Tile")))
         {

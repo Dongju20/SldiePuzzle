@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,13 +18,13 @@ public class Tile : MonoBehaviour
         get => numeric;
     }
     private Board board;
-    //ÇöÀç À§Ä¡°¡ ¸Â´ÂÁö ¾È¸Â´ÂÁö È®ÀÎ..
+    //í˜„ì¬ ìœ„ì¹˜ê°€ ë§ëŠ”ì§€ ì•ˆë§ëŠ”ì§€ í™•ì¸..
     public bool IsCorrected { private set; get; } = false;
     public void CheckType()
     {
         if(albedoTexture.GetType() == typeof(Sprite))
         {
-            Debug.Log("Å¸ÀÔÀ» ¹Ù²ß´Ï´Ù...");
+            Debug.Log("íƒ€ì…ì„ ë°”ê¿‰ë‹ˆë‹¤...");
             albedoTexture = ConvertType(albedoTexture);
             Debug.Log(albedoTexture.GetType().Name);
         }
@@ -54,24 +54,24 @@ public class Tile : MonoBehaviour
     {
         this.board = board;
         CheckType();
-        //¼ø¼­¸¦ ¼³Á¤ÇÕ´Ï´Ù...
+        //ìˆœì„œë¥¼ ì„¤ì •í•©ë‹ˆë‹¤...
         Numeric = numeric;
 
-        //¸¸¾à ¼û°Ü¾ß ÇÏ´Â Å¸ÀÏÀÌ¶ó¸é...
+        //ë§Œì•½ ìˆ¨ê²¨ì•¼ í•˜ëŠ” íƒ€ì¼ì´ë¼ë©´...
         if (Numeric == hideNumeric)
         {
             this.GetComponent<MeshRenderer>().enabled = false;
             board.EmptyTile = this.gameObject;
         }
-        //xÆ÷Áö¼Ç°ú yÆ÷Áö¼Ç ¹× ºí·ÏÅ©±â
-        //ÀÌ¶§ ºí·ÏÅ©±â == hideNumeric
-        //±×¸²À» ½½¶óÀÌ½ÌÇÕ´Ï´Ù...
+        //xí¬ì§€ì…˜ê³¼ yí¬ì§€ì…˜ ë° ë¸”ë¡í¬ê¸°
+        //ì´ë•Œ ë¸”ë¡í¬ê¸° == hideNumeric
+        //ê·¸ë¦¼ì„ ìŠ¬ë¼ì´ì‹±í•©ë‹ˆë‹¤...
         int slice = (int)Mathf.Sqrt(hideNumeric);
         float sliceSize = 1.0f / slice;
         float startX = (float)xPosition / slice;
         float startY = 1.0f - (float)(yPosition + 1) / slice;
         Debug.Log(slice + " " + startX + " " + startY);
-        //¸ÓÅÍ¸®¾óÀÇ °ªÀ» ±³Ã¼ÇÕ´Ï´Ù...
+        //ë¨¸í„°ë¦¬ì–¼ì˜ ê°’ì„ êµì²´í•©ë‹ˆë‹¤...
         Material material = new Material(Shader.Find("Standard"));
         Debug.Log(albedoTexture.GetType().Name);
         material.mainTexture = (Texture)albedoTexture;
@@ -88,7 +88,7 @@ public class Tile : MonoBehaviour
 
     private IEnumerator MoveTo(Vector3 end)
     {
-        Debug.Log("À§Ä¡¸¦ ¿Å±é´Ï´Ù...?" + end);
+        Debug.Log("ìœ„ì¹˜ë¥¼ ì˜®ê¹ë‹ˆë‹¤...?" + end);
         float current = 0;
         float percent = 0;
         float moveTime = 0.1f;
@@ -106,7 +106,7 @@ public class Tile : MonoBehaviour
 
     private void CheckCorrect()
     {
-        Debug.Log("ÇöÀç À§Ä¡" + this.transform.localPosition + "¿ø·¡ ÀÖ¾î¾ß ÇÏ´Â À§Ä¡ " + correctPosition);
+        Debug.Log("í˜„ì¬ ìœ„ì¹˜" + this.transform.localPosition + "ì›ë˜ ìˆì–´ì•¼ í•˜ëŠ” ìœ„ì¹˜ " + correctPosition);
         IsCorrected = correctPosition == this.transform.localPosition ? true : false;
     }
 

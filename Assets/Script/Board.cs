@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -13,37 +13,37 @@ public class Board : MonoBehaviour
     {
         int index;
     }
-    //ÃÊ±âÈ­ À§Ä¡...
-    //¿©±â¼± Å¸ÀÏÀÇ Áß½ÉÁÂÇ¥
+    //ì´ˆê¸°í™” ìœ„ì¹˜...
+    //ì—¬ê¸°ì„  íƒ€ì¼ì˜ ì¤‘ì‹¬ì¢Œí‘œ
     [SerializeField]
     private Transform postion;
     
-    //Å¸ÀÏ ¿ÀºêÁ§Æ®
+    //íƒ€ì¼ ì˜¤ë¸Œì íŠ¸
     [SerializeField]
     private GameObject TilePrefab;
 
     [SerializeField]
     private int size;
 
-    //Å¸ÀÏ °£ °Å¸®
+    //íƒ€ì¼ ê°„ ê±°ë¦¬
     private float distance;
 
-    //º¸µå ±æÀÌ
+    //ë³´ë“œ ê¸¸ì´
     private float boardLength;
-    //ºó Å¸ÀÏÀÇ À§Ä¡
+    //ë¹ˆ íƒ€ì¼ì˜ ìœ„ì¹˜
     public GameObject EmptyTile { set; get; }
 
-    private List<Tile> tileList = new List<Tile>();                                // »ı¼ºÇÑ Å¸ÀÏ Á¤º¸ ÀúÀå
+    private List<Tile> tileList = new List<Tile>();                                // ìƒì„±í•œ íƒ€ì¼ ì •ë³´ ì €ì¥
    
     // Start is called before the first frame update
     void Start()
     {
-        //º¸µå ±æÀÌ¸¦ °¡Á®¿É´Ï´Ù...
+        //ë³´ë“œ ê¸¸ì´ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤...
         boardLength = transform.localScale.x;
-        //Å¸ÀÏ °£ °Å¸® ±¸ÇÏ±â...
+        //íƒ€ì¼ ê°„ ê±°ë¦¬ êµ¬í•˜ê¸°...
         distance = boardLength / size;
 
-        //Å¸ÀÏ »ı¼ºÇÔ¼ö....
+        //íƒ€ì¼ ìƒì„±í•¨ìˆ˜....
         Initialized();
         tileList.ForEach(tile => tile.SetCorrectPosition());
         StartCoroutine("Shuffle");
@@ -52,17 +52,17 @@ public class Board : MonoBehaviour
     // Update is called once per frame
 
 
-    //z´Â ¾ç¼ö xÀ½¼öºÎÅÍ ½ÃÀÛ
+    //zëŠ” ì–‘ìˆ˜ xìŒìˆ˜ë¶€í„° ì‹œì‘
     private void Initialized()
     {
         float xStart = - boardLength / 2;
         float yStart =  boardLength / 2;
-        //y¹øÂ° Å¸ÀÏ
+        //yë²ˆì§¸ íƒ€ì¼
         for (int y = 0; y < size; y++)
         {
             for(int x = 0; x < size; x++)
             {
-                //Å¸ÀÏ »ı¼º À§Ä¡ ÁöÁ¤...
+                //íƒ€ì¼ ìƒì„± ìœ„ì¹˜ ì§€ì •...
                 GameObject clone = Instantiate(TilePrefab, postion);
                 Vector3 vector3 = new Vector3();
                 vector3.x = xStart + x * distance;
@@ -73,19 +73,19 @@ public class Board : MonoBehaviour
                 Tile tile = clone.GetComponent<Tile>();
                 Debug.Log(y * size + x + 1);
                 tile.SetUp(this, (y * size + x + 1), size * size, x, y);
-                //Å¸ÀÏÀÇ ¿Ã¹Ù¸¥ À§Ä¡¸¦ ÁöÁ¤..
+                //íƒ€ì¼ì˜ ì˜¬ë°”ë¥¸ ìœ„ì¹˜ë¥¼ ì§€ì •..
                 tileList.Add(tile);
             }
         }
     }
 
-    //¿òÁ÷ÀÌ´Â ÇÔ¼ö¸¦ È£ÃâÇÕ´Ï´Ù...
+    //ì›€ì§ì´ëŠ” í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•©ë‹ˆë‹¤...
     public void MoveTile(GameObject gameObject)
     {
         Vector3 EmptyTilePosition = EmptyTile.transform.localPosition;
-        Debug.Log("ºó Å¸ÀÏ À§Ä¡" + EmptyTilePosition + "Å¬¸¯µÈ Å¸ÀÏ À§Ä¡" + gameObject.transform.localPosition);
-        Debug.Log("½ÇÁ¦ Å¸ÀÏ°£ °Å¸®..." + Vector3.Distance(EmptyTilePosition, gameObject.transform.localPosition) + "¿ä±¸µÇ´Â Å¸ÀÏ°£ °Å¸®" + distance);
-        //¸¸¾à ºóÄ­°úÀÇ °Å¸®°¡ Å¸ÀÏÀÇ °Å¸®¿Í °°´Ù¸é...
+        Debug.Log("ë¹ˆ íƒ€ì¼ ìœ„ì¹˜" + EmptyTilePosition + "í´ë¦­ëœ íƒ€ì¼ ìœ„ì¹˜" + gameObject.transform.localPosition);
+        Debug.Log("ì‹¤ì œ íƒ€ì¼ê°„ ê±°ë¦¬..." + Vector3.Distance(EmptyTilePosition, gameObject.transform.localPosition) + "ìš”êµ¬ë˜ëŠ” íƒ€ì¼ê°„ ê±°ë¦¬" + distance);
+        //ë§Œì•½ ë¹ˆì¹¸ê³¼ì˜ ê±°ë¦¬ê°€ íƒ€ì¼ì˜ ê±°ë¦¬ì™€ ê°™ë‹¤ë©´...
         if(Vector3.Distance(EmptyTilePosition, gameObject.transform.localPosition) == distance)
         {
             Vector3 goalPostion = EmptyTilePosition;
@@ -96,7 +96,7 @@ public class Board : MonoBehaviour
         }
         else
         {
-            Debug.Log("ÀÌµ¿ºÒ°¡...");
+            Debug.Log("ì´ë™ë¶ˆê°€...");
         }
     }
     public void IsGameOver()
@@ -120,7 +120,7 @@ public class Board : MonoBehaviour
         float percent = 0;
         float time = 1.5f;
         tileList.ForEach(x => { Debug.Log(x.Numeric); });
-        //¸®½ºÆ® ÃÊ±âÈ­
+        //ë¦¬ìŠ¤íŠ¸ ì´ˆê¸°í™”
         while (percent < 1)
         {
             current += Time.deltaTime;
@@ -138,7 +138,7 @@ public class Board : MonoBehaviour
             tileList[index1].transform.localPosition = second;
             yield return null;
         }
-        //Ç®ÀÌ°¡ °¡´ÉÇÑÁö È®ÀÎÀ» ÇÏ´Â ÇÔ¼ö È£Ãâ...
+        //í’€ì´ê°€ ê°€ëŠ¥í•œì§€ í™•ì¸ì„ í•˜ëŠ” í•¨ìˆ˜ í˜¸ì¶œ...
         CheckSolveAble();
     }
 
@@ -160,14 +160,14 @@ public class Board : MonoBehaviour
         }
 
 
-        //ºóÄ­ ÀÎµ¦½º À§Ä¡..
+        //ë¹ˆì¹¸ ì¸ë±ìŠ¤ ìœ„ì¹˜..
         int blankSpace = -1;
-        //ºñ¾îÀÖ´Â ºóÄ­ÀÇ ÇàÀÇ À§Ä¡
+        //ë¹„ì–´ìˆëŠ” ë¹ˆì¹¸ì˜ í–‰ì˜ ìœ„ì¹˜
         int blankSpaceRow = -1;
 
-        //ÀÎ¹öÁ¯ Ä«¿îÆ®
+        //ì¸ë²„ì ¼ ì¹´ìš´íŠ¸
         int cnt = 0;
-        //¹è¿­ Å©±â
+        //ë°°ì—´ í¬ê¸°
         int size = arr.Length;
         for(int i  = 0; i < size; i++)
         {
@@ -175,13 +175,13 @@ public class Board : MonoBehaviour
         }
         for(int i = 0; i < size; i++)
         {
-            //¸¸¾à ºóÄ­ÀÌ¶ó¸é
+            //ë§Œì•½ ë¹ˆì¹¸ì´ë¼ë©´
             if (arr[i] == size)
             {
-                //ºóÄ­ À§Ä¡¸¦ ÁöÁ¤ÇÑÈÄ È¦¼ö Çà È¤Àº Â¦¼ö ÇàÀÎÁö °ËÁõ..
+                //ë¹ˆì¹¸ ìœ„ì¹˜ë¥¼ ì§€ì •í•œí›„ í™€ìˆ˜ í–‰ í˜¹ì€ ì§ìˆ˜ í–‰ì¸ì§€ ê²€ì¦..
                 blankSpace = i;
-                //ºóÄ­ ÇàÀ» ±¸ÇÏ´Â ·ÎÁ÷
-                //Çà Å©±â
+                //ë¹ˆì¹¸ í–‰ì„ êµ¬í•˜ëŠ” ë¡œì§
+                //í–‰ í¬ê¸°
                 int rowCnt = (int)Mathf.Sqrt(size);
                 int rowPosition = i / rowCnt;
                 blankSpaceRow = rowCnt - rowPosition;
@@ -198,45 +198,45 @@ public class Board : MonoBehaviour
         }
         Debug.Log(cnt);
         //check the Puzzle is SolveAble
-        //NÀÌ È¦¼öÀÎ °æ¿ì
+        //Nì´ í™€ìˆ˜ì¸ ê²½ìš°
         int n = (int)Mathf.Sqrt(size) % 2;
         if (n!= 0)
         {
-            //È¦¼ö¶ó¸é...
+            //í™€ìˆ˜ë¼ë©´...
             if (cnt % 2 == 0)
             {
-                Debug.Log("ÀÌÆÛÁñÀº Ç®ÀÌ°¡ °¡´ÉÇÕ´Ï´Ù..");
+                Debug.Log("ì´í¼ì¦ì€ í’€ì´ê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤..");
             }
             else
             {
-                Debug.Log("ÀÌÆÛÁñÀº Ç®ÀÌ°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.. ´Ù½Ã ¼¯½À´Ï´Ù.");
+                Debug.Log("ì´í¼ì¦ì€ í’€ì´ê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.. ë‹¤ì‹œ ì„ìŠµë‹ˆë‹¤.");
                 StartCoroutine("Shuffle");
             }
         }
-        //Â¦¼öÀÎ °æ¿ì
+        //ì§ìˆ˜ì¸ ê²½ìš°
         else
         {
-            //ºóÄ­ÀÌ ¾Æ·¡¼­ºÎÅÍ Â¦¼ö¹øÂ°¿¡ ÀÖÀ» ¶§
+            //ë¹ˆì¹¸ì´ ì•„ë˜ì„œë¶€í„° ì§ìˆ˜ë²ˆì§¸ì— ìˆì„ ë•Œ
             Debug.Log(blankSpaceRow);
             if(blankSpaceRow %2 == 0)
             {
-                //È¦¼ö¶ó¸é
+                //í™€ìˆ˜ë¼ë©´
                 if(cnt % 2 != 0)
                 {
-                    Debug.Log("ÀÌÆÛÁñÀº Ç®ÀÌ°¡ °¡´ÉÇÕ´Ï´Ù..");
+                    Debug.Log("ì´í¼ì¦ì€ í’€ì´ê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤..");
                 }
                 else
                 {
                     StartCoroutine("Shuffle");
                 }
             }
-            //ºóÄ­ÀÌ ¾Æ·¡¼­ºÎÅÍ È¦¼ö¹øÂ°¿¡ ÀÖÀ» ¶§
+            //ë¹ˆì¹¸ì´ ì•„ë˜ì„œë¶€í„° í™€ìˆ˜ë²ˆì§¸ì— ìˆì„ ë•Œ
             else
             {
-                //Â¦¼ö¶ó¸é
+                //ì§ìˆ˜ë¼ë©´
                 if (cnt % 2 == 0)
                 {
-                    Debug.Log("ÀÌÆÛÁñÀº Ç®ÀÌ°¡ °¡´ÉÇÕ´Ï´Ù..");
+                    Debug.Log("ì´í¼ì¦ì€ í’€ì´ê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤..");
                 }
                 else
                 {

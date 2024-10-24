@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,7 +11,7 @@ public class BoardManager : MonoBehaviour
 
     private Board boardScript;
 
-    //¼¯À» È½¼ö
+    //ì„ì„ íšŸìˆ˜
     [SerializeField] private int cnt;
     public void Start()
     {
@@ -45,7 +45,7 @@ public class BoardManager : MonoBehaviour
         {
             float rayLength = 100.0f;
 
-            // ·¹ÀÌ¸¦ ±×¸®±â (ÃÊ·Ï»ö)
+            // ë ˆì´ë¥¼ ê·¸ë¦¬ê¸° (ì´ˆë¡ìƒ‰)
             Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red, 10.0f);
 
             Debug.Log("hit Something...");
@@ -57,12 +57,12 @@ public class BoardManager : MonoBehaviour
 
     public void DoShuffle()
     {
-        //¿¹Àü¿¡ ¼¯¾ú´ø °ª
+        //ì˜ˆì „ì— ì„ì—ˆë˜ ê°’
         int previous = 5;
         for(int i  = 0; i < cnt; i++)
         {
-            Debug.Log(i + "¹øÂ° ½ÇÇà..");
-            //ÇöÀç ¹æÇâ
+            Debug.Log(i + "ë²ˆì§¸ ì‹¤í–‰..");
+            //í˜„ì¬ ë°©í–¥
             int current = Shuffle(previous);
         }
     }
@@ -71,7 +71,7 @@ public class BoardManager : MonoBehaviour
     public int Shuffle(int previos)
     {
         int rand = Random.Range(0 , 4);
-        //¼¯´Â ¹æÇâ ÁöÁ¤..
+        //ì„ëŠ” ë°©í–¥ ì§€ì •..
         float distance = boardScript.GetDistance();
         Vector3 point = Vector3.zero;
         switch (rand)
@@ -93,7 +93,7 @@ public class BoardManager : MonoBehaviour
         Ray ray = new Ray();
         Vector3 direction = boardScript.EmptyTile.transform.position - (this.transform.position - point);
         ray.origin = this.transform.position;
-        Debug.Log("·¹ÀÌÄ³½ºÆÃ ¹æÇâ" + direction);
+        Debug.Log("ë ˆì´ìºìŠ¤íŒ… ë°©í–¥" + direction);
         direction = direction.normalized;
         ray.direction = direction;
         shootRay(ray);

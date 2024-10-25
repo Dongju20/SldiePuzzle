@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -68,8 +68,9 @@ public class Board : MonoBehaviour
                 vector3.x = xStart + x * distance;
                 vector3.y = yStart - y * distance;
                 clone.transform.SetLocalPositionAndRotation(vector3, Quaternion.Euler(Vector3.zero));
-                float scale = 1.0f / size;
-                clone.transform.localScale = new Vector3(scale, scale, 1);
+                float scaleX = this.transform.localScale.x / size;
+                float scaleY = this.transform.localScale.y / size;
+                clone.transform.localScale = new Vector3(scaleX, scaleY, 1);
                 Tile tile = clone.GetComponent<Tile>();
                 Debug.Log(y * size + x + 1);
                 tile.SetUp(this, (y * size + x + 1), size * size, x, y);

@@ -16,6 +16,11 @@ public class RsolutionController : MonoBehaviour
         SetResoulutin();
     }
 
+    private void Update()
+    {
+        SetResoulutin();
+    }
+
     private void SetResoulutin()
     {
         int deviceWidth = Screen.width; // 기기 너비 저장

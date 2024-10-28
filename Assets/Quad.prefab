@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0190589f055d8924985b2cf2083f12ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  albedoTexture: {fileID: 2800000, guid: 130291ae34a8ebe409336c79de89e20d, type: 3}
+  albedoTexture: {fileID: -959900360, guid: 130291ae34a8ebe409336c79de89e20d, type: 3}

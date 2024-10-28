@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -118,5 +118,10 @@ public class Tile : MonoBehaviour
     public Vector3 GetCorrectPosition()
     {
         return this.correctPosition;
+    }
+
+    public void SetAlbedoTexture(Object gameObject)
+    {
+        this.albedoTexture = gameObject;
     }
 }

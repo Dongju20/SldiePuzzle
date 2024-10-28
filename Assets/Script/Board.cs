@@ -23,6 +23,7 @@ public class Board : MonoBehaviour
     private GameObject TilePrefab;
 
     [SerializeField]
+    [Range(2, 8)]
     private int size;
 
     //타일 간 거리
@@ -34,7 +35,10 @@ public class Board : MonoBehaviour
     public GameObject EmptyTile { set; get; }
 
     private List<Tile> tileList = new List<Tile>();                                // 생성한 타일 정보 저장
-   
+
+    //게임 끝났는지 여부를 확인하는 함수
+    private bool isGameOver = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +46,6 @@ public class Board : MonoBehaviour
         boardLength = transform.localScale.x;
         //타일 간 거리 구하기...
         distance = boardLength / size;
-
         //타일 생성함수....
         Initialized();
         tileList.ForEach(tile => tile.SetCorrectPosition());
@@ -55,8 +58,10 @@ public class Board : MonoBehaviour
     //z는 양수 x음수부터 시작
     private void Initialized()
     {
-        float xStart = - boardLength / 2;
-        float yStart =  boardLength / 2;
+        float xStart = -boardLength / 2;
+        float yStart = boardLength / 2;
+        Debug.Log(xStart);
+        
         //y번째 타일
         for (int y = 0; y < size; y++)
         {
@@ -67,9 +72,9 @@ public class Board : MonoBehaviour
                 Vector3 vector3 = new Vector3();
                 vector3.x = xStart + x * distance;
                 vector3.y = yStart - y * distance;
+                float scaleX = boardLength / size;
+                float scaleY = boardLength / size;
                 clone.transform.SetLocalPositionAndRotation(vector3, Quaternion.Euler(Vector3.zero));
-                float scaleX = this.transform.localScale.x / size;
-                float scaleY = this.transform.localScale.y / size;
                 clone.transform.localScale = new Vector3(scaleX, scaleY, 1);
                 Tile tile = clone.GetComponent<Tile>();
                 Debug.Log(y * size + x + 1);
@@ -107,6 +112,11 @@ public class Board : MonoBehaviour
         if (tiles.Count == size * size - 1)
         {
             Debug.Log("GameClear");
+            isGameOver = true;
+        }
+        else
+        {
+            isGameOver = false;
         }
     }
 
@@ -159,7 +169,6 @@ public class Board : MonoBehaviour
             {
                 Tile tile = tileList.Find(tile => tile.GetCorrectPosition() == transforms[y * this.size + x].transform.localPosition);
                 arr[tile.Numeric - 1] = y * this.size + x + 1;
-                Debug.Log((tile.Numeric) + " " + (y * this.size + x + 1));
             }
         }
 
@@ -188,11 +197,6 @@ public class Board : MonoBehaviour
         int rowCnt = (int)Mathf.Sqrt(size);
         int rowPosition = blankSpace / rowCnt;
         blankSpaceRow = rowCnt - rowPosition;
-
-        for (int i = 0; i < size; i++)
-        {
-            Debug.Log(arr[i]);
-        }
         for (int i = 0; i < boardSize - 1; i++)
         {
 
@@ -206,7 +210,6 @@ public class Board : MonoBehaviour
 
             }
         }
-        Debug.Log(cnt);
         //check the Puzzle is SolveAble
         //N이 홀수인 경우
         int n = (int)Mathf.Sqrt(size) % 2;

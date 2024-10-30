@@ -15,7 +15,6 @@ public class Board : MonoBehaviour
     }
     //초기화 위치...
     //여기선 타일의 중심좌표
-    [SerializeField]
     private Transform postion;
     
     //타일 오브젝트
@@ -38,10 +37,12 @@ public class Board : MonoBehaviour
 
     //게임 끝났는지 여부를 확인하는 함수
     private bool isGameOver = false;
-
+    [SerializeField]
+    private Object albedoTexture;
     // Start is called before the first frame update
     void Start()
     {
+        postion = this.transform;
         //보드 길이를 가져와 초기화
         boardLength = transform.localScale.x;
         //타일 간 거리 구하기... --> 나중에 타일을 옮길 때 쓰이는 변수
@@ -51,18 +52,16 @@ public class Board : MonoBehaviour
         //타일 정보를 담는 리스트 배열
         tileList.ForEach(tile => tile.SetCorrectPosition());
         //섞는 함수 실행...
-        StartCoroutine("Shuffle");
+        StartCoroutine(Shuffle());
+        
     }
-
-    // Update is called once per frame
-
 
     //z는 양수 x음수부터 시작
     private void Initialized()
     {
         //시작 위치 x, y를 설정
-        float xStart = -boardLength / 2;
-        float yStart = boardLength / 2;
+        float xStart = -boardLength / 2 + distance / 2;
+        float yStart = boardLength / 2 - distance / 2;
         Debug.Log(xStart);
         
         //y번째 --> 행
@@ -85,6 +84,7 @@ public class Board : MonoBehaviour
                 //생성한 타일 크기 조절
                 clone.transform.localScale = new Vector3(scaleX, scaleY, 1);
                 Tile tile = clone.GetComponent<Tile>();
+                tile.setAlbedoTexture(albedoTexture);
                 //타일의 셋업 함수를 부른다음
                 tile.SetUp(this, (y * size + x + 1), size * size, x, y);
                 //타일의 정보를 저장
@@ -143,7 +143,7 @@ public class Board : MonoBehaviour
     {
         float current = 0;
         float percent = 0;
-        float time = 1.5f;
+        float time = 0.3f * size;
         
         //리스트 초기화
         while (percent < 1)
@@ -225,15 +225,12 @@ public class Board : MonoBehaviour
         //inversion을 세는 for문
         for (int i = 0; i < boardSize - 1; i++)
         {
-
             for (int j = i + 1; j < boardSize - 1; j++)
             {
-
                 if (newArr[i] > newArr[j])
                 {
                     cnt++;
                 }
-
             }
         }
         //check the Puzzle is SolveAble
@@ -251,7 +248,7 @@ public class Board : MonoBehaviour
             {
                 Debug.Log("이퍼즐은 풀이가 불가능합니다.. 다시 섞습니다.");
                 //풀이가 불가능함으로 다시 섞기
-                StartCoroutine("Shuffle");
+                StartCoroutine(Shuffle());
             }
         }
         //N X N에서 N이 짝수인 경우
@@ -269,7 +266,8 @@ public class Board : MonoBehaviour
                 else
                 {
                     //다시 섞습니다.
-                    StartCoroutine("Shuffle");
+                    Debug.Log("이퍼즐은 풀이가 불가능합니다.. 다시 섞습니다.");
+                    StartCoroutine(Shuffle());
                 }
             }
             //빈칸이 아래서부터 홀수번째에 있을 때
@@ -283,7 +281,8 @@ public class Board : MonoBehaviour
                 else
                 {
                     //다시 섞는 함수를 호출
-                    StartCoroutine("Shuffle");
+                    Debug.Log("이퍼즐은 풀이가 불가능합니다.. 다시 섞습니다.");
+                    StartCoroutine(Shuffle());
                 }
             }
         }

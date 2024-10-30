@@ -14,7 +14,6 @@ public class Tile : MonoBehaviour
     private Vector3 correctPosition;
     //내가 넣고 싶은 그림 오브젝트
     //Sprite Image든 상관없이 적용 가능하게 함
-    [SerializeField]
     private Object albedoTexture;
     public int Numeric{
         set {
@@ -136,5 +135,10 @@ public class Tile : MonoBehaviour
     public Vector3 GetCorrectPosition()
     {
         return this.correctPosition;
+    }
+
+    public void setAlbedoTexture(Object albedoTexture)
+    {
+        this.albedoTexture = albedoTexture;
     }
 }

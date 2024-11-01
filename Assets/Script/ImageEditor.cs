@@ -29,7 +29,7 @@ public class ImageEditor : Editor
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("Select Type (Texture and Sprite only)");
         EditorGUILayout.Space(10);
-        imageController.imageType = (ImageType)EditorGUILayout.EnumPopup("imageType", imageController.imageType);
+        imageController.imageType = (ImageType)EditorGUILayout.EnumPopup("ImageType", imageController.imageType);
         switch(imageController.imageType)
         {
             case ImageType.Sprite:
@@ -39,6 +39,17 @@ public class ImageEditor : Editor
                 imageController.texture = (Texture)EditorGUILayout.ObjectField("Texture", imageController.texture, typeof(Texture), true);
                 break;
 
+        }
+        EditorGUILayout.Space(10);
+        EditorGUILayout.LabelField("Select RenderMode (Opaque and fade only)");
+        EditorGUILayout.Space(10);
+        imageController.renderType = (RenderType)EditorGUILayout.EnumPopup("RederType", imageController.renderType);
+        switch (imageController.renderType)
+        {
+            //투명한 경우..
+            case RenderType.Transparent:
+                imageController.alpha = EditorGUILayout.IntSlider("Alpha", imageController.alpha, 0, 255);
+                break;
         }
     }
 }

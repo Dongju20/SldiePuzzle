@@ -22,6 +22,7 @@ public class Tile : MonoBehaviour
         get => numeric;
     }
     private Board board;
+    
     //현재 위치가 맞는지 안맞는지 확인..
     public bool IsCorrected { private set; get; } = false;
     public void CheckType()
@@ -61,7 +62,6 @@ public class Tile : MonoBehaviour
     public void SetUp(Board board ,int numeric, int hideNumeric, int xPosition, int yPosition)
     {
         this.board = board;
-        CheckType();
         //순서를 설정합니다...
         Numeric = numeric;
 
@@ -81,12 +81,12 @@ public class Tile : MonoBehaviour
         float startX = (float)xPosition / slice;
         float startY = 1.0f - (float)(yPosition + 1) / slice;
         Debug.Log(slice + " " + startX + " " + startY);
-        //머터리얼의 값을 교체합니다...
-        Material material = new Material(Shader.Find("Standard"));
-        Debug.Log(albedoTexture.GetType().Name);
-        material.mainTexture = (Texture)albedoTexture;
-        this.GetComponent<MeshRenderer>().material = material;
+
         //머터리얼 값을 설정함
+        ImageController imageController;
+        imageController = this.GetComponent<ImageController>();
+        Material material = imageController.SetMaterial();
+        imageController.SetMaterialRenderingMode(material);
         material.SetTextureOffset("_MainTex", new Vector2(startX, startY));
         material.SetTextureScale("_MainTex", new Vector2 (sliceSize, sliceSize));
     }

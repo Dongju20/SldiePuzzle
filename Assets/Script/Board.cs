@@ -37,8 +37,7 @@ public class Board : MonoBehaviour
 
     //게임 끝났는지 여부를 확인하는 함수
     private bool isGameOver = false;
-    [SerializeField]
-    private Object albedoTexture;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -84,7 +83,9 @@ public class Board : MonoBehaviour
                 //생성한 타일 크기 조절
                 clone.transform.localScale = new Vector3(scaleX, scaleY, 1);
                 Tile tile = clone.GetComponent<Tile>();
-                tile.setAlbedoTexture(albedoTexture);
+                tile.GetComponent<ImageController>().texture = this.GetComponent<ImageController>().texture;
+                tile.GetComponent<ImageController>().renderType = this.GetComponent<ImageController>().renderType;
+                tile.GetComponent<ImageController>().alpha = this.GetComponent<ImageController>().alpha;
                 //타일의 셋업 함수를 부른다음
                 tile.SetUp(this, (y * size + x + 1), size * size, x, y);
                 //타일의 정보를 저장

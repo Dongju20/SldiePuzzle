@@ -26,6 +26,10 @@ public class ImageController : MonoBehaviour
             texture = ConvertType.Convert(sprite);
         }
     }
+    public void Start()
+    {
+        this.GetComponent<ImageController>().SetMaterial();
+    }
 
     public Material SetMaterial()
     {

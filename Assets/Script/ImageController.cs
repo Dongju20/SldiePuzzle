@@ -29,6 +29,7 @@ public class ImageController : MonoBehaviour
     public void Start()
     {
         this.GetComponent<ImageController>().SetMaterial();
+        SetMaterialRenderingMode(material);
     }
 
     public Material SetMaterial()

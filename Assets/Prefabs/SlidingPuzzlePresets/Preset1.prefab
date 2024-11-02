@@ -360,10 +360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83443df3379ef404095307b54b5e38a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: 5aac48538b2f1d743b22ed06a62c19ff, type: 3}
+  texture: {fileID: 2800000, guid: 6f1440a808216be488b06f0da01440d9, type: 3}
   sprite: {fileID: 0}
   imageType: 1
-  renderType: 1
+  renderType: 0
   alpha: 255
 --- !u!1 &4028250994192519243
 GameObject:
@@ -426,8 +426,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5897204913320545293}
+  m_Children: []
   m_Father: {fileID: 421577213523905807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6008847474294257029
@@ -463,65 +462,3 @@ Transform:
   - {fileID: 137501466553759386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2104917868417803211
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 137501466553759386}
-    m_Modifications:
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936082595676218289, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-      propertyPath: m_Name
-      value: SlidingPuzleExitButton
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
---- !u!4 &5897204913320545293 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
-  m_PrefabInstance: {fileID: 2104917868417803211}
-  m_PrefabAsset: {fileID: 0}

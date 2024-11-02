@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class ImageController : MonoBehaviour
 {
 
-
+    
     public Texture texture = null;
     public Sprite sprite = null;
 
@@ -46,6 +46,7 @@ public class ImageController : MonoBehaviour
             material = ConvertType.setMaterial(this.gameObject, texture);
         }
     }
+
 
     public void SetMaterialRenderingMode(Material material)
     {

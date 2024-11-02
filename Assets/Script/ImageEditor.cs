@@ -12,13 +12,16 @@ public class ImageEditor : Editor
     {
         if(AssetDatabase.Contains(target)) {
             imageController = null;
+            Debug.Log("여기 실행..");
         }
         else
         {
-            // target은 Object형이므로 Enemy로 형변환
+            // target은 Object형이므로 ImageController 형변환
             imageController = (ImageController)target;
+            Debug.Log("타켓 실행");
         }
     }
+
 
     public override void OnInspectorGUI()
     {
@@ -51,5 +54,6 @@ public class ImageEditor : Editor
                 imageController.alpha = EditorGUILayout.IntSlider("Alpha", imageController.alpha, 0, 255);
                 break;
         }
+        EditorUtility.SetDirty(imageController);
     }
 }

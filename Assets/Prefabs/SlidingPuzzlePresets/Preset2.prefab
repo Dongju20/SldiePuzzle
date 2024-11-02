@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83443df3379ef404095307b54b5e38a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: 2657c7832a5e17547adf0ccf135316e3, type: 3}
+  texture: {fileID: 2800000, guid: 6f1440a808216be488b06f0da01440d9, type: 3}
   sprite: {fileID: 0}
   imageType: 1
   renderType: 0

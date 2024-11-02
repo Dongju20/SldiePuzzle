@@ -458,9 +458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83443df3379ef404095307b54b5e38a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: 5aac48538b2f1d743b22ed06a62c19ff, type: 3}
+  texture: {fileID: 0}
   sprite: {fileID: 0}
-  imageType: 1
+  imageType: 0
   renderType: 0
   alpha: 255
 --- !u!1001 &4277006231771902597

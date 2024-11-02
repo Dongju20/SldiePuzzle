@@ -31,24 +31,19 @@ public class BoardManager : MonoBehaviour
 
     private RaycastHit shootRay(Ray ray)
     {
+        float rayLength = 10.0f;
+        Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red, 10.0f);
+        
         RaycastHit hit;
-        //raycast에서 맞은 물체가 Tile이라면...
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Tile")))
-        {
-            float rayLength = 100.0f;
+        //raycast에서 맞은 물체가 클릭 가능한 오브젝트이면...
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("SlidingPuzzle"))) {
+            Debug.Log("hit clickable object ...");
 
-            // 레이를 그리기 (초록색)
-            Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red, 10.0f);
-
-            Debug.Log("hit Something...");
-            /*
-             * boardScript의 MoveTile함수를 호출
-             * 이때 Board boardScript = hit.collider.GetComponentInParent<Board>();를 사용한 이유는 
-             * 슬라이드 퍼즐이 여러개 생성될 때를 상정하여 만들었습니다
-             * 현재 타일의 부모 보드 정보를 가져오기 위함임
-             */
-            Board boardScript = hit.collider.GetComponentInParent<Board>();
-            boardScript.MoveTile(hit.collider.gameObject);
+            IClickableObj clickableObj = hit.collider.GetComponent<IClickableObj>();
+            if (clickableObj != null)
+            {
+                clickableObj.ClickObj();
+            }
         }
 
         return hit;

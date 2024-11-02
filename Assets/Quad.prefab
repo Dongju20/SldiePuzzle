@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8249075087452084804}
   - component: {fileID: 768178201844613204}
   - component: {fileID: 7195274080368683906}
-  m_Layer: 3
+  m_Layer: 20
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,3 +135,5 @@ MonoBehaviour:
   texture: {fileID: 0}
   sprite: {fileID: 0}
   imageType: 0
+  renderType: 0
+  alpha: 255

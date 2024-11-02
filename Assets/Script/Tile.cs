@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Experimental.AI;
 using UnityEngine.UIElements;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IClickableObj
 {
     //1 2 3 4 이런식으로 현재 타일의 정보를 나타냄
     private int numeric;
@@ -89,6 +89,21 @@ public class Tile : MonoBehaviour
         imageController.SetMaterialRenderingMode(material);
         material.SetTextureOffset("_MainTex", new Vector2(startX, startY));
         material.SetTextureScale("_MainTex", new Vector2 (sliceSize, sliceSize));
+    }
+
+    // Override.
+    public void ClickObj()
+    {
+        /*
+         * boardScript의 MoveTile함수를 호출
+         * 이때 Board boardScript = hit.collider.GetComponentInParent<Board>();를 사용한 이유는 
+         * 슬라이드 퍼즐이 여러개 생성될 때를 상정하여 만들었습니다.
+         * 현재 타일의 부모 보드 정보를 가져오기 위함임
+
+         // 간단한 부분이라 따로 메소드 작성은 안했는데, 필요 시 분리.
+         */
+        Board boardScript = GetComponentInParent<Board>();
+        boardScript.MoveTile(gameObject);
     }
 
     //움직이는 함수 호출

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2443219586756019687}
   - component: {fileID: 1840167904344588631}
   - component: {fileID: 8717683607277546568}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 8601184549714791410}
   - component: {fileID: 1274431850734037207}
   - component: {fileID: 174113731945694112}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BoardBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 2831624316606800430}
   - component: {fileID: 7804057888446162849}
   - component: {fileID: 3676496507116906705}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1051017661419833238}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: SlidingPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 137501466553759386}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 421577213523905807}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Preset1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,6 +6,12 @@ using UnityEngine.Experimental.Rendering;
 
 public class BoardManager : MonoBehaviour
 {
+    private Camera puzzleCamera;
+    
+    void Awake() {
+        puzzleCamera = GetComponent<Camera>();
+    }
+
     void Update()
     {
         updateInput();
@@ -23,7 +29,7 @@ public class BoardManager : MonoBehaviour
     public void Click()
     {
         //화면에서 클릭한 위치로 레이를 생성
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         //shootRay함수를 호출
         hit = shootRay(ray);
@@ -35,10 +41,11 @@ public class BoardManager : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red, 10.0f);
         
         RaycastHit hit;
-        //raycast에서 맞은 물체가 클릭 가능한 오브젝트이면...
+        // raycast 에서 맞은 물체가 SlidingPuzzle 레이어의 오브젝트이면...
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("SlidingPuzzle"))) {
             Debug.Log("hit clickable object ...");
 
+            // 클릭 가능한 오브젝트인지 확인 , IClickableObj 인터페이스를 상속받으면, 클릭 가능한 오브젝트임.
             IClickableObj clickableObj = hit.collider.GetComponent<IClickableObj>();
             if (clickableObj != null)
             {

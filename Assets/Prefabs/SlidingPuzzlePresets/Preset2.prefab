@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2040186808385591275}
   - component: {fileID: 6123170177424785664}
   - component: {fileID: 107753279069401922}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BoardBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 857910606918942477}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6987689650788849689}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: SlidingPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 8722199993458377904}
   - component: {fileID: 7136128172247978963}
   - component: {fileID: 2919271782591144540}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 7354008237825244176}
   - component: {fileID: 7549186108893673795}
   - component: {fileID: 6343959092728646659}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042525748319835588}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Preset2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,6 +510,10 @@ PrefabInstance:
     - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086215194488925896, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8936082595676218289, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
       propertyPath: m_Name

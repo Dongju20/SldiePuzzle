@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4757026237725749635}
   - component: {fileID: 3381817931924071622}
   - component: {fileID: 3410546634916153688}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 7265485536559865690}
   - component: {fileID: 6700423892739134101}
   - component: {fileID: 8562517842308559955}
+  - component: {fileID: 2844661013601579783}
   m_Layer: 20
   m_Name: SlidingPuzleShuffleButton
   m_TagString: Untagged
@@ -296,3 +297,15 @@ MonoBehaviour:
   imageType: 1
   renderType: 1
   alpha: 255
+--- !u!114 &2844661013601579783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8936082595676218289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be5f072ca8981e4ca2d8bdc8534f17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

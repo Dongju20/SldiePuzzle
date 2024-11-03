@@ -25,39 +25,9 @@ public class Tile : MonoBehaviour, IClickableObj
     
     //현재 위치가 맞는지 안맞는지 확인..
     public bool IsCorrected { private set; get; } = false;
-    public void CheckType()
-    {
-        //Sprite면 Texture로 바꿔야 함
-        if(albedoTexture.GetType() == typeof(Sprite))
-        {
-            Debug.Log("타입을 바꿉니다...");
-            //Sprite -> Texture를 담당하는 함수
-            albedoTexture = ConvertType(albedoTexture);
-            Debug.Log(albedoTexture.GetType().Name);
-        }
-    }
-
-    //Sprite -> Texture로 바꿔주는 함수
-    public Texture ConvertType(Object albedoTexture)
-    {
-        Sprite sprite = (Sprite)albedoTexture;
-        if (sprite.rect.width != sprite.texture.width)
-        {
-            Texture2D newText = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
-            Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x,
-                                                         (int)sprite.textureRect.y,
-                                                         (int)sprite.textureRect.width,
-                                                         (int)sprite.textureRect.height);
-            newText.SetPixels(newColors);
-            newText.Apply();
-            return newText;
-        }
-        else
-            return sprite.texture;
-    }
 
     //현재 타일이 올바른 위치에 있는가 확인 여부
-    public bool IsCorrect { private set; get; } = false;
+    // public bool IsCorrect { private set; get; } = false;
 
     public void SetUp(Board board ,int numeric, int hideNumeric, int xPosition, int yPosition)
     {

@@ -51,6 +51,7 @@ public class Board : MonoBehaviour
         //타일 정보를 담는 리스트 배열
         tileList.ForEach(tile => tile.SetCorrectPosition());
         //섞는 함수 실행...
+        StartCoroutine(Shuffle());
     }
 
     //z는 양수 x음수부터 시작

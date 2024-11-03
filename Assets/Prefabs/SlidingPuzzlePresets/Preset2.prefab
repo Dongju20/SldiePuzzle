@@ -155,6 +155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1360888671708313397}
+  - {fileID: 7228383343675873918}
   m_Father: {fileID: 1042525748319835588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983340695911633405
@@ -463,6 +464,68 @@ Transform:
   - {fileID: 857910606918942477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2932229714999522744
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 857910606918942477}
+    m_Modifications:
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936082595676218289, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+      propertyPath: m_Name
+      value: SlidingPuzleShuffleButton
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+--- !u!4 &7228383343675873918 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5539778533343276998, guid: 33949d5610b08f24ead39b73ed54ebb6, type: 3}
+  m_PrefabInstance: {fileID: 2932229714999522744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6774511362594068723
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor.AssetImporters;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 
 public class Board : MonoBehaviour
 {

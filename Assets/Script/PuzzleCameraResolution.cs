@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class PuzzleCameraResolution : MonoBehaviour
 {
     public bool isAutoSize; // 해상도 자동 지정 여부. (기기의 해상도 사용.).

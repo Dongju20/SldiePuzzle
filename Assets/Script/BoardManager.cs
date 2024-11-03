@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 
+[RequireComponent(typeof(Camera))]
 public class BoardManager : MonoBehaviour
 {
     private Camera puzzleCamera;

@@ -38,6 +38,11 @@ public class Board : MonoBehaviour
     //게임 끝났는지 여부를 확인하는 함수
     private bool isGameOver = false;
     
+    private bool isBoardActive = false;
+
+    //게임이 한번활성화되었는가 안되었는가 확인
+    private bool isSecondTimeActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +55,6 @@ public class Board : MonoBehaviour
         Initialized();
         //타일 정보를 담는 리스트 배열
         tileList.ForEach(tile => tile.SetCorrectPosition());
-        //섞는 함수 실행...
-        StartCoroutine(Shuffle());
     }
 
     //z는 양수 x음수부터 시작
@@ -144,7 +147,6 @@ public class Board : MonoBehaviour
         float current = 0;
         float percent = 0;
         float time = 0.3f * size;
-        
         //리스트 초기화
         while (percent < 1)
         {
@@ -286,5 +288,19 @@ public class Board : MonoBehaviour
                 }
             }
         }
+    }
+
+    //게임 오브젝트 활성화/비활성화 함수
+    public void SetActiveBoard(){
+        //만약 두번째 활성화가 아니고 활성화라면...
+        if(!isSecondTimeActive){
+            //섞는 함수를 실행합니다...
+            isSecondTimeActive = true;
+            Invoke("StartShuffle", 1.5f);
+        }
+    }
+
+    public void StartShuffle(){
+        StartCoroutine(Shuffle());
     }
 }

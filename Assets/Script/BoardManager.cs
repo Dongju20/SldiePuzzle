@@ -53,6 +53,17 @@ public class BoardManager : MonoBehaviour
             }
         }
 
+        //테스트용 나중에 지우세요...
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("StartBtn")))
+        {
+            Debug.Log("hit clickable object ...");
+
+            ActiveBtn clickableObj = hit.collider.GetComponent<ActiveBtn>();
+            if (clickableObj != null)
+            {
+                clickableObj.DoActive(true);
+            }
+        }
         return hit;
     }
 

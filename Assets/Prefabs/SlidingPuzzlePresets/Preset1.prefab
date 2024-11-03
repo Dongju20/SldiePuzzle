@@ -426,7 +426,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8491561558297173468}
   m_Father: {fileID: 421577213523905807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6008847474294257029
@@ -462,3 +463,69 @@ Transform:
   - {fileID: 137501466553759386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4123372042280563226
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 137501466553759386}
+    m_Modifications:
+    - target: {fileID: 4358095118357624907, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: puzzleObject
+      value: 
+      objectReference: {fileID: 6008847474294257029}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936082595676218289, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+      propertyPath: m_Name
+      value: SlidingPuzleExitButton
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+--- !u!4 &8491561558297173468 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5539778533343276998, guid: de2b71f9cb5087c45a7b84f15e83703b, type: 3}
+  m_PrefabInstance: {fileID: 4123372042280563226}
+  m_PrefabAsset: {fileID: 0}

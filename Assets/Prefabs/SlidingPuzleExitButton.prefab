@@ -309,3 +309,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3f54a36f5a36c4facab704d73f7093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleObject: {fileID: 0}

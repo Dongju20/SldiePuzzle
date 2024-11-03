@@ -38,7 +38,7 @@ public class Board : MonoBehaviour
     //게임 끝났는지 여부를 확인하는 함수
     private bool isGameOver = false;
     
-    private bool isBoardActive = false;
+    private bool isShuffle = false;
 
     //게임이 한번활성화되었는가 안되었는가 확인
     private bool isSecondTimeActive = false;
@@ -144,6 +144,7 @@ public class Board : MonoBehaviour
     //타일을 섞는 함수
     public IEnumerator Shuffle()
     {
+        isShuffle = true;
         float current = 0;
         float percent = 0;
         float time = 0.3f * size;
@@ -174,6 +175,7 @@ public class Board : MonoBehaviour
 
     public void CheckSolveAble()
     {
+        
         int boardSize = this.size * this.size;
         int[] arr = new int[boardSize];
         //N X N의 배열에서 빈칸을 제외한 타일들의 위치를 1차원 배열로 바꿈
@@ -245,6 +247,7 @@ public class Board : MonoBehaviour
             if (cnt % 2 == 0)
             {
                 Debug.Log("이퍼즐은 풀이가 가능합니다..");
+                isShuffle = false;
             }
             else
             {
@@ -264,6 +267,7 @@ public class Board : MonoBehaviour
                 if (cnt % 2 != 0)
                 {
                     Debug.Log("이퍼즐은 풀이가 가능합니다..");
+                    isShuffle = false;
                 }
                 else
                 {
@@ -279,6 +283,7 @@ public class Board : MonoBehaviour
                 if (cnt % 2 == 0)
                 {
                     Debug.Log("이퍼즐은 풀이가 가능합니다..");
+                    isShuffle = false;
                 }
                 else
                 {
@@ -296,11 +301,17 @@ public class Board : MonoBehaviour
         if(!isSecondTimeActive){
             //섞는 함수를 실행합니다...
             isSecondTimeActive = true;
-            Invoke("StartShuffle", 1.5f);
+            StartCoroutine(StartShuffle());
         }
     }
 
-    public void StartShuffle(){
+    public IEnumerator StartShuffle(){
+        yield return new WaitForSeconds(1.5f);
         StartCoroutine(Shuffle());
+    }
+
+    public bool GetShuffle()
+    {
+        return isShuffle;
     }
 }

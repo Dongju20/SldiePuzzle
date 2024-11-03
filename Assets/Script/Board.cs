@@ -99,6 +99,8 @@ public class Board : MonoBehaviour
     //움직이는 함수를 호출합니다...
     public void MoveTile(GameObject gameObject)
     {
+        if (isShuffle)
+            return;
         //빈 타일의 위치를 가져옵니다...
         Vector3 EmptyTilePosition = EmptyTile.transform.localPosition;
         //만약 움직이고자 하는 타일과 빈칸 타일의 거리가 타일의 거리와 같다면... --> 즉 움직일 수 있는 타일
@@ -306,6 +308,7 @@ public class Board : MonoBehaviour
     }
 
     public IEnumerator StartShuffle(){
+        isShuffle = true;
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(Shuffle());
     }

@@ -15,6 +15,8 @@ public class Tile : MonoBehaviour, IClickableObj
     //내가 넣고 싶은 그림 오브젝트
     //Sprite Image든 상관없이 적용 가능하게 함
     private Object albedoTexture;
+
+
     public int Numeric{
         set {
             numeric = value;
@@ -126,4 +128,6 @@ public class Tile : MonoBehaviour, IClickableObj
     {
         this.albedoTexture = albedoTexture;
     }
+
+
 }

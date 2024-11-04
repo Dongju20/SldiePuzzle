@@ -29,9 +29,9 @@ public class ImageEditor : Editor
         {
             return;
         }
-        EditorGUILayout.Space(10);
+        EditorGUILayout.Space();
         EditorGUILayout.LabelField("Select Type (Texture and Sprite only)");
-        EditorGUILayout.Space(10);
+        EditorGUILayout.Space();
         imageController.imageType = (ImageType)EditorGUILayout.EnumPopup("ImageType", imageController.imageType);
         switch(imageController.imageType)
         {
@@ -43,9 +43,9 @@ public class ImageEditor : Editor
                 break;
 
         }
-        EditorGUILayout.Space(10);
+        EditorGUILayout.Space();
         EditorGUILayout.LabelField("Select RenderMode (Opaque and fade only)");
-        EditorGUILayout.Space(10);
+        EditorGUILayout.Space();
         imageController.renderType = (RenderType)EditorGUILayout.EnumPopup("RederType", imageController.renderType);
         switch (imageController.renderType)
         {

@@ -76,8 +76,9 @@ public class Board : MonoBehaviour
                 //타일의 x, y크기를 지정 --> 정사각형 모양이다.
                 float scaleX = boardLength / size;
                 float scaleY = boardLength / size;
-                //생성한 타일 위치 지정
-                clone.transform.SetLocalPositionAndRotation(vector3, Quaternion.Euler(Vector3.zero));
+                //생성한 타일 위치 지정 // SetLocalPositionAndRotation() 함수 미지원 버전 위한 코드 수정.
+                clone.transform.localPosition = vector3;
+                clone.transform.localRotation = Quaternion.Euler(Vector3.zero);
                 //생성한 타일 크기 조절
                 clone.transform.localScale = new Vector3(scaleX, scaleY, 1);
                 Tile tile = clone.GetComponent<Tile>();
@@ -188,8 +189,8 @@ public class Board : MonoBehaviour
         {
             for (int x = 0; x < this.size; x++)
             {
-                //N x N 타일의 순서를 1차원 배열로 표현..
-                Tile tile = tileList.Find(tile => tile.GetCorrectPosition() == transforms[y * this.size + x].transform.localPosition);
+                //N x N 타일의 순서를 1차원 배열로 표현.. // tile 변수 중복에 의해 tile -> t 로 변경.
+                Tile tile = tileList.Find(t => t.GetCorrectPosition() == transforms[y * this.size + x].transform.localPosition);
                 arr[tile.Numeric - 1] = y * this.size + x + 1;
             }
         }

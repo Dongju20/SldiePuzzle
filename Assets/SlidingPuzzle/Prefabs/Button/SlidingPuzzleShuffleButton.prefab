@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Close
+  m_text: Shuffle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -184,9 +184,9 @@ GameObject:
   - component: {fileID: 7265485536559865690}
   - component: {fileID: 6700423892739134101}
   - component: {fileID: 8562517842308559955}
-  - component: {fileID: 4358095118357624907}
+  - component: {fileID: 2844661013601579783}
   m_Layer: 20
-  m_Name: SlidingPuzleExitButton
+  m_Name: SlidingPuzzleShuffleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   imageType: 1
   renderType: 1
   alpha: 255
---- !u!114 &4358095118357624907
+--- !u!114 &2844661013601579783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,7 +306,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8936082595676218289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb3f54a36f5a36c4facab704d73f7093, type: 3}
+  m_Script: {fileID: 11500000, guid: 8be5f072ca8981e4ca2d8bdc8534f17d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleObject: {fileID: 0}

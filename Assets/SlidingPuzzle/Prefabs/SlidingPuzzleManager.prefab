@@ -170,7 +170,7 @@ MonoBehaviour:
   texture: {fileID: 2800000, guid: 5aac48538b2f1d743b22ed06a62c19ff, type: 3}
   sprite: {fileID: 0}
   imageType: 1
-  renderType: 0
+  renderType: 1
   alpha: 255
 --- !u!1 &5904311073578108885
 GameObject:
@@ -660,10 +660,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83443df3379ef404095307b54b5e38a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: 5aac48538b2f1d743b22ed06a62c19ff, type: 3}
+  texture: {fileID: 2800000, guid: 88446dc78e1003341bac5c22feeadd13, type: 3}
   sprite: {fileID: 0}
   imageType: 1
-  renderType: 1
+  renderType: 0
   alpha: 255
 --- !u!1001 &2973938579862638084
 PrefabInstance:
@@ -717,6 +717,10 @@ PrefabInstance:
       propertyPath: texture
       value: 
       objectReference: {fileID: 2800000, guid: 5aac48538b2f1d743b22ed06a62c19ff, type: 3}
+    - target: {fileID: 3676496507116906705, guid: 41e36b278fe6ad945830940cb25cc24e, type: 3}
+      propertyPath: imageType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6008847474294257029, guid: 41e36b278fe6ad945830940cb25cc24e, type: 3}
       propertyPath: m_Name
       value: Preset1
@@ -793,16 +797,24 @@ PrefabInstance:
       value: 255
       objectReference: {fileID: 0}
     - target: {fileID: 6343959092728646659, guid: f185ac0e88c21f04b9fab016e8812a06, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6343959092728646659, guid: f185ac0e88c21f04b9fab016e8812a06, type: 3}
       propertyPath: texture
       value: 
-      objectReference: {fileID: 2800000, guid: 5aac48538b2f1d743b22ed06a62c19ff, type: 3}
+      objectReference: {fileID: 2800000, guid: 88446dc78e1003341bac5c22feeadd13, type: 3}
+    - target: {fileID: 6343959092728646659, guid: f185ac0e88c21f04b9fab016e8812a06, type: 3}
+      propertyPath: imageType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6343959092728646659, guid: f185ac0e88c21f04b9fab016e8812a06, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6343959092728646659, guid: f185ac0e88c21f04b9fab016e8812a06, type: 3}
       propertyPath: renderType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8114723048334303558, guid: f185ac0e88c21f04b9fab016e8812a06, type: 3}
       propertyPath: m_Name

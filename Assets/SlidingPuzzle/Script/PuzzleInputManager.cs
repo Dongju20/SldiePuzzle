@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
-public class BoardManager : MonoBehaviour
+public class PuzzleInputManager : MonoBehaviour
 {
     private Camera puzzleCamera;
     

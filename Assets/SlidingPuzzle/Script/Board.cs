@@ -33,15 +33,19 @@ public class Board : MonoBehaviour
 
     //게임 끝났는지 여부를 확인하는 함수
     private bool isGameOver = false;
-    
-    private bool isShuffle = false;
 
     //게임이 한번활성화되었는가 안되었는가 확인
     private bool isSecondTimeActive = false;
 
+    //퍼즐 활성화여부
+    private bool isPuzzleActive = false;
+
+    private PuzzleManager puzzleManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        puzzleManager = PuzzleManager.GetInstance();
         postion = this.transform;
         //보드 길이를 가져와 초기화
         boardLength = transform.localScale.x;
@@ -96,7 +100,7 @@ public class Board : MonoBehaviour
     //움직이는 함수를 호출합니다...
     public void MoveTile(GameObject gameObject)
     {
-        if (isShuffle)
+        if (puzzleManager.GetIsShuffle())
             return;
         //빈 타일의 위치를 가져옵니다...
         Vector3 EmptyTilePosition = EmptyTile.transform.localPosition;
@@ -143,7 +147,15 @@ public class Board : MonoBehaviour
     //타일을 섞는 함수
     public IEnumerator Shuffle()
     {
-        isShuffle = true;
+        if (puzzleManager.GetIsShuffle() && !isSecondTimeActive)
+        {
+            isSecondTimeActive = true;
+            yield break;
+        }
+        Debug.Log(puzzleManager.GetIsShuffle());
+        if (puzzleManager.GetIsShuffle())
+            yield break;
+        puzzleManager.SetIsShuffle(true);
         float current = 0;
         float percent = 0;
         float time = 0.3f * size;
@@ -170,6 +182,7 @@ public class Board : MonoBehaviour
         }
         //풀이가 가능한지 확인을 하는 함수 호출...
         CheckSolveAble();
+        puzzleManager.SetIsShuffle(false);
     }
 
     public void CheckSolveAble()
@@ -246,7 +259,7 @@ public class Board : MonoBehaviour
             if (cnt % 2 == 0)
             {
                 Debug.Log("이퍼즐은 풀이가 가능합니다..");
-                isShuffle = false;
+                puzzleManager.SetIsShuffle(false);
             }
             else
             {
@@ -266,7 +279,7 @@ public class Board : MonoBehaviour
                 if (cnt % 2 != 0)
                 {
                     Debug.Log("이퍼즐은 풀이가 가능합니다..");
-                    isShuffle = false;
+                    puzzleManager.SetIsShuffle(false);
                 }
                 else
                 {
@@ -282,7 +295,7 @@ public class Board : MonoBehaviour
                 if (cnt % 2 == 0)
                 {
                     Debug.Log("이퍼즐은 풀이가 가능합니다..");
-                    isShuffle = false;
+                    puzzleManager.SetIsShuffle(false);
                 }
                 else
                 {
@@ -299,19 +312,23 @@ public class Board : MonoBehaviour
         //만약 두번째 활성화가 아니고 활성화라면...
         if(!isSecondTimeActive){
             //섞는 함수를 실행합니다...
-            isSecondTimeActive = true;
             StartCoroutine(StartShuffle());
         }
     }
 
     public IEnumerator StartShuffle(){
-        isShuffle = true;
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(Shuffle());
     }
 
-    public bool GetShuffle()
+    public bool GetIsPuzzleActive()
     {
-        return isShuffle;
+        return isPuzzleActive;
+    }
+
+    public void SetIsPuzzleActive(bool isPuzzleActive)
+    {
+        this.isPuzzleActive = isPuzzleActive;
+        puzzleManager.SetIsGamePlay(this.isPuzzleActive);
     }
 }

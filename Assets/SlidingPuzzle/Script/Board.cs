@@ -37,8 +37,8 @@ public class Board : MonoBehaviour
     //게임이 한번활성화되었는가 안되었는가 확인
     private bool isSecondTimeActive = false;
 
-    //퍼즐 활성화여부
-    private bool isPuzzleActive = false;
+    //풀이 가능한 퍼즐인지 확인하는 여부
+    private bool isSolvable = false;
 
     private PuzzleManager puzzleManager;
 
@@ -136,6 +136,16 @@ public class Board : MonoBehaviour
             //isGameOver는 false임
             isGameOver = false;
         }
+        //게임 클리어 이후 로직은 개발자께서 구현하셔야 합니다
+        if (isGameOver)
+        {   
+            this.transform.parent.parent.parent.gameObject.SetActive(false);
+            Debug.Log(this.transform.parent.parent.parent.gameObject);
+            puzzleManager.SetIsGamePlay(false);
+            this.isGameOver = false;
+            isSecondTimeActive = false;
+            isSolvable = false;
+        }
     }
 
     //타일 간 거리를 리턴하는 함수
@@ -147,13 +157,7 @@ public class Board : MonoBehaviour
     //타일을 섞는 함수
     public IEnumerator Shuffle()
     {
-        if (puzzleManager.GetIsShuffle() && !isSecondTimeActive)
-        {
-            isSecondTimeActive = true;
-            yield break;
-        }
-        Debug.Log(puzzleManager.GetIsShuffle());
-        if (puzzleManager.GetIsShuffle())
+        if (puzzleManager.GetIsShuffle() && isSolvable)
             yield break;
         puzzleManager.SetIsShuffle(true);
         float current = 0;
@@ -182,7 +186,6 @@ public class Board : MonoBehaviour
         }
         //풀이가 가능한지 확인을 하는 함수 호출...
         CheckSolveAble();
-        puzzleManager.SetIsShuffle(false);
     }
 
     public void CheckSolveAble()
@@ -249,6 +252,8 @@ public class Board : MonoBehaviour
                 }
             }
         }
+        Debug.Log("인버전 카운트" + cnt);
+
         //check the Puzzle is SolveAble
         //N이 홀수인 경우
         //inversion이 무조건 짝수이면 풀이가 가능함
@@ -260,11 +265,13 @@ public class Board : MonoBehaviour
             {
                 Debug.Log("이퍼즐은 풀이가 가능합니다..");
                 puzzleManager.SetIsShuffle(false);
+                isSolvable = true;
             }
             else
             {
                 Debug.Log("이퍼즐은 풀이가 불가능합니다.. 다시 섞습니다.");
                 //풀이가 불가능함으로 다시 섞기
+                isSolvable = false;
                 StartCoroutine(Shuffle());
             }
         }
@@ -280,11 +287,13 @@ public class Board : MonoBehaviour
                 {
                     Debug.Log("이퍼즐은 풀이가 가능합니다..");
                     puzzleManager.SetIsShuffle(false);
+                    isSolvable = true;
                 }
                 else
                 {
                     //다시 섞습니다.
                     Debug.Log("이퍼즐은 풀이가 불가능합니다.. 다시 섞습니다.");
+                    isSolvable = false;
                     StartCoroutine(Shuffle());
                 }
             }
@@ -295,12 +304,14 @@ public class Board : MonoBehaviour
                 if (cnt % 2 == 0)
                 {
                     Debug.Log("이퍼즐은 풀이가 가능합니다..");
+                    isSolvable = true;
                     puzzleManager.SetIsShuffle(false);
                 }
                 else
                 {
                     //다시 섞는 함수를 호출
                     Debug.Log("이퍼즐은 풀이가 불가능합니다.. 다시 섞습니다.");
+                    isSolvable = false;
                     StartCoroutine(Shuffle());
                 }
             }
@@ -309,26 +320,23 @@ public class Board : MonoBehaviour
 
     //게임 오브젝트 활성화/비활성화 함수
     public void SetActiveBoard(){
-        //만약 두번째 활성화가 아니고 활성화라면...
-        if(!isSecondTimeActive){
-            //섞는 함수를 실행합니다...
+        //섞는 함수를 실행합니다...
+        if (!isSecondTimeActive){
+            isSecondTimeActive = true;
+            puzzleManager.SetIsGamePlay(true);
             StartCoroutine(StartShuffle());
         }
     }
 
     public IEnumerator StartShuffle(){
+        puzzleManager.SetIsShuffle(true);
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(Shuffle());
     }
 
-    public bool GetIsPuzzleActive()
-    {
-        return isPuzzleActive;
-    }
 
-    public void SetIsPuzzleActive(bool isPuzzleActive)
+    public bool GetIsGameOver()
     {
-        this.isPuzzleActive = isPuzzleActive;
-        puzzleManager.SetIsGamePlay(this.isPuzzleActive);
+        return isGameOver;
     }
 }

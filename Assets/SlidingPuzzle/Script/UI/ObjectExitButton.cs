@@ -14,6 +14,7 @@ public class ObjectExitButton : ObjectButton
     }
 
     public void Exit() {
+        PuzzleManager.GetInstance().SetIsGamePlay(false);
         puzzleObject.SetActive(false);
     }
 }

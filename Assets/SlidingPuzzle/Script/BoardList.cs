@@ -31,20 +31,18 @@ public class BoardList : MonoBehaviour
         for (int i = 0; boards.Length > i; i++)
         {
             Board board = boards[i].Board.GetComponentInChildren<Board>();
-            Debug.Log(puzzleManager.GetIsShuffle());
             if (puzzleManager.GetIsShuffle())
             {
                 return;
             }
+            
             boards[i].Board.SetActive(false);
-            board.SetIsPuzzleActive(false);
             if (boards[i].Button == btn)
             {
                 Debug.Log("섞습니다..");
                 boards[i].Board.SetActive(onOff);
                 Debug.Log(board);
                 board.SetActiveBoard();
-                board.SetIsPuzzleActive(true);
             }
         }
     }

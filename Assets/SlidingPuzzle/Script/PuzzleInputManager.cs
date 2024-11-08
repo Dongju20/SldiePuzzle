@@ -11,15 +11,17 @@ public class PuzzleInputManager : MonoBehaviour
 
     void Update()
     {
-        updateInput();
+        UpdateInput();
     }
 
-    private void updateInput()
+    private void UpdateInput()
     {
         //입력을 받을 때마다 Click함수를 호출
         if (Input.GetMouseButtonDown(0))
         {
-            Click();
+            if (!PuzzleManager.GetInstance().GetIsShuffle()) {
+                Click();
+            }
         }
     }
 
@@ -29,22 +31,24 @@ public class PuzzleInputManager : MonoBehaviour
         Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         //shootRay함수를 호출
-        hit = shootRay(ray);
+        hit = ShootRay(ray);
     }
 
-    private RaycastHit shootRay(Ray ray)
+    private RaycastHit ShootRay(Ray ray)
     {
         float rayLength = 10.0f;
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red, 10.0f);
-        
+
+        RaycastHit[] raycastHits = Physics.RaycastAll(ray, rayLength, LayerMask.GetMask("SlidingPuzzle"));
+
         RaycastHit hit;
         // raycast 에서 맞은 물체가 SlidingPuzzle 레이어의 오브젝트이면...
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("SlidingPuzzle"))) {
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("SlidingPuzzle")))
+        {
             Debug.Log("hit clickable object ...");
 
             // 클릭 가능한 오브젝트인지 확인 , IClickableObj 인터페이스를 상속받으면, 클릭 가능한 오브젝트임.
-            IClickableObj clickableObj = hit.collider.GetComponent<IClickableObj>();
-            if (clickableObj != null)
+            if (hit.collider.TryGetComponent<IClickableObj>(out var clickableObj))
             {
                 clickableObj.ClickObj();
             }
@@ -55,8 +59,7 @@ public class PuzzleInputManager : MonoBehaviour
         {
             Debug.Log("hit clickable object ...");
 
-            ActiveBtn clickableObj = hit.collider.GetComponent<ActiveBtn>();
-            if (clickableObj != null)
+            if (hit.collider.TryGetComponent<ActiveBtn>(out var clickableObj))
             {
                 clickableObj.DoActive(true);
             }

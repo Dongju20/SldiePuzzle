@@ -337,6 +337,14 @@ PrefabInstance:
       propertyPath: imageType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6701511317111762082, guid: 82c414ade91d13e4d8291af834168f53, type: 3}
+      propertyPath: m_ClearFlags
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701511317111762082, guid: 82c414ade91d13e4d8291af834168f53, type: 3}
+      propertyPath: orthographic size
+      value: 1.95
+      objectReference: {fileID: 0}
     - target: {fileID: 7197998605563561553, guid: 82c414ade91d13e4d8291af834168f53, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -347,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197998605563561553, guid: 82c414ade91d13e4d8291af834168f53, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7197998605563561553, guid: 82c414ade91d13e4d8291af834168f53, type: 3}
       propertyPath: m_LocalRotation.w

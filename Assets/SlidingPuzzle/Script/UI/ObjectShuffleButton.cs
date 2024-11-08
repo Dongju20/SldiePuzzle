@@ -14,6 +14,6 @@ public class ObjectShuffleButton : ObjectButton
     }
 
     public void Shuffle() {
-        StartCoroutine(puzzleBoard.Shuffle());
+        puzzleBoard.Shuffle();
     }
 }

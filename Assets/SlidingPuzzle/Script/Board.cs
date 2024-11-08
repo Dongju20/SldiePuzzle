@@ -16,6 +16,10 @@ public class Board : MonoBehaviour
     [SerializeField, Range(2, 8)]
     private int size;
 
+   // 섞이는 횟수.
+    [SerializeField, Range(1, 100)]
+    private int shuffleCount;
+
     //타일 간 거리
     private float distance;
 
@@ -66,7 +70,7 @@ public class Board : MonoBehaviour
         int yCount = size;
         
         ImageController boardImageController = this.GetComponent<ImageController>();
-        
+
         //y번째 --> 행
         for (int y = 0; y < yCount; y++)
         {
@@ -171,12 +175,12 @@ public class Board : MonoBehaviour
         int yCount = size;
 
         do {
-            float current = 0;
-            float time = 0.3f * size;
+            shuffleCount = 5;
+            int currentCount = 0;
             // 리스트 초기화.
-            while (current < time)
+            while (currentCount < shuffleCount)
             {
-                current += Time.deltaTime;
+                currentCount++;
 
                 // tileList에서 index1, index2번째의 위치를 랜덤으로 가져오고, (단, index1 != index2)
                 int index1 = Random.Range(0, xCount * yCount);
@@ -187,8 +191,22 @@ public class Board : MonoBehaviour
 
                     if (index1 != index2) break;
                 }
-                //tileList에서 index1번째 와 index2번째의 위치를 서로 바꿔줌.
-                (tileList[index2].transform.localPosition,tileList[index1].transform.localPosition) = (tileList[index1].transform.localPosition, tileList[index2].transform.localPosition);
+
+                //tileList에서 index1번째 와 index2번째의 위치를 서로 서서히 바꿔줌.
+                Vector3 tile1Pos = tileList[index1].transform.localPosition;
+                Vector3 tile2Pos = tileList[index2].transform.localPosition;
+                float current = 0;
+                float percent = 0;
+                float moveTime = 0.2f;
+                while(percent < 1)
+                {
+                    current += Time.deltaTime;
+                    percent = current / moveTime;
+                    tileList[index2].transform.localPosition = Vector3.Lerp(tile2Pos, tile1Pos, percent);
+                    tileList[index1].transform.localPosition = Vector3.Lerp(tile1Pos, tile2Pos, percent);
+                    yield return null;
+                }
+
                 yield return null;
             }
         } while(CheckSolvable() == false);

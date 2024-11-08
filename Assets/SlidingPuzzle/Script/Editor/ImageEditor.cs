@@ -36,12 +36,13 @@ public class ImageEditor : Editor
         switch(imageController.imageType)
         {
             case ImageType.Sprite:
+                imageController.texture = null;
                 imageController.sprite = (Sprite)EditorGUILayout.ObjectField("Sprite", imageController.sprite, typeof(Sprite), true);
                 break;
             case ImageType.Texture2D:
+                imageController.sprite = null;
                 imageController.texture = (Texture)EditorGUILayout.ObjectField("Texture", imageController.texture, typeof(Texture), true);
                 break;
-
         }
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Select RenderMode (Opaque and fade only)");

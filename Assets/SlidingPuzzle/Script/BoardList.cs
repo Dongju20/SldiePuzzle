@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class BoardList : MonoBehaviour
 {
@@ -17,9 +15,15 @@ public class BoardList : MonoBehaviour
         private GameObject board;
         [SerializeField]
         private GameObject button;
+        [SerializeField]
+        private UnityEvent targetEvent;
+
         // button과 board에 접근할 수 있는 읽기 전용 프로퍼티 추가
         public GameObject Button => button;
         public GameObject Board => board;
+
+        // targetEvent 이벤트 실행 메소드.
+        public void RunTargetEvent() { targetEvent?.Invoke(); }
     }
 
 
@@ -47,12 +51,27 @@ public class BoardList : MonoBehaviour
         }
     }
 
+    // 퍼즐 클리어 시 해당 퍼즐에 연결된 타겟이벤트 실행하는 함수.
+    public void ClearPuzzle(GameObject board)
+    {
+        for (int i=0; boards.Length > i; i++)
+        {
+            if (boards[i].Board.GetComponentInChildren<Board>().gameObject == board)
+            {
+                boards[i].RunTargetEvent();         // 연결된 이벤트 실행.
+                boards[i].Board.SetActive(false);   // 퍼즐 보드 오브젝트 비활성화. 
+                break;
+            }
+        }
+    }
+
     public void Start()
     {
         for (int i = 0; boards.Length > i; i++)
         {
             boards[i].Board.SetActive(false);
             boards[i].Button.GetComponent<ActiveBtn>().SetBoardList(this);
+            boards[i].Board.GetComponentInChildren<Board>().SetBoardList(this);
         }
         puzzleManager = PuzzleManager.GetInstance();
         Debug.Log("퍼즐 매니저 " + puzzleManager);

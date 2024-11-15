@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
+    private BoardList boardList;
+    public void SetBoardList(BoardList boardList) {this.boardList = boardList;}
     //초기화 위치...
     //여기선 타일의 중심좌표
     private Transform postion;
@@ -141,14 +143,10 @@ public class Board : MonoBehaviour
             //isGameOver는 false임
             isGameOver = false;
         }
-        //게임 클리어 이후 로직은 개발자께서 구현하셔야 합니다
+
         if (isGameOver)
-        {   
-            this.transform.parent.parent.parent.gameObject.SetActive(false);
-            Debug.Log(this.transform.parent.parent.parent.gameObject);
-            puzzleManager.SetIsShuffle(false);
-            this.isGameOver = false;
-            isSecondTimeActive = false;
+        {
+            boardList.ClearPuzzle(this.gameObject);
         }
     }
 
@@ -349,7 +347,7 @@ public class Board : MonoBehaviour
     public IEnumerator StartShuffle(){
         puzzleManager.SetIsShuffle(true);
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(ShuffleCoroutine());
+        Shuffle();
     }
 
     public bool GetIsGameOver()

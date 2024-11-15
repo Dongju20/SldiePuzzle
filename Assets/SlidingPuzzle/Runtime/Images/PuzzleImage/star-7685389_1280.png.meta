@@ -126,10 +126,10 @@ TextureImporter:
       name: star-7685389_1280_0
       rect:
         serializedVersion: 2
-        x: 203
-        y: 666
-        width: 676
-        height: 428
+        x: 0
+        y: 0
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

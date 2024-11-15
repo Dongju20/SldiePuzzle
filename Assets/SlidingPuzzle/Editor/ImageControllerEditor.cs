@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(ImageController))]
-public class ImageEditor : Editor
+public class ImageControllerEditor : Editor
 {
     public ImageController imageController;
     

@@ -2,7 +2,7 @@
 
 1.개요
 	이 에셋은 슬라이딩 퍼즐 솔루션으로 오브젝트들로만 이루어져 있으며 UI요소는 없습니다.
-	이 에셋은 기본적으로 유니티 3D 프로젝트에서 유효합니다.
+	이 에셋은 기본적으로 유니티 3D 프로젝트에서 사용하기를 권장합니다. (2D 프로젝트에서도 사용할 수 있습니다.)
 
 2.사용법
 	※ 이 에셋을 사용하기 위해서는 필수적으로 레이어 추가가 필요합니다.
@@ -64,7 +64,7 @@
 
 English
 1. Overview
-	This asset is a sliding puzzle solution consisting solely of objects without any UI elements. It is primarily designed for use in Unity 3D projects.
+	This asset is primarily recommended for use in Unity 3D projects. (It can also be used in 2D projects.)
 
 2. Usage
 	※ Note: The following layers must be added to use this asset:

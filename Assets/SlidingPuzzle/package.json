@@ -1,0 +1,10 @@
+{
+  "name": "com.tictactoetictactoe.slidingpuzzle",
+  "version": "1.0.0",
+  "displayName": "3D Sliding Puzzle Kit",
+  "unity": "2022.3",
+  "license": "MIT",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+  }
+}

@@ -1,19 +1,22 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer))]
-public class ChangeColorDemo : MonoBehaviour
+namespace TictactoeTictactoe.SlidingPuzzle
 {
-    public void ChangeColorRed() {
-        GetComponent<Renderer>().material.color = Color.red;
-        Debug.Log("color changed to red");
+    [RequireComponent(typeof(Renderer))]
+    public class ChangeColorDemo : MonoBehaviour
+    {
+        public void ChangeColorRed() {
+            GetComponent<Renderer>().material.color = Color.red;
+            Debug.Log("color changed to red");
+        }
+        public void ChangeColorYellow() {
+            GetComponent<Renderer>().material.color = Color.yellow;
+            Debug.Log("color changed to yellow");
+        }
+        public void ChangeColorBlue() {
+            GetComponent<Renderer>().material.color = Color.blue;
+            Debug.Log("color changed to blue");
+        }
+        
     }
-    public void ChangeColorYellow() {
-        GetComponent<Renderer>().material.color = Color.yellow;
-        Debug.Log("color changed to yellow");
-    }
-    public void ChangeColorBlue() {
-        GetComponent<Renderer>().material.color = Color.blue;
-        Debug.Log("color changed to blue");
-    }
-    
 }

@@ -1,27 +1,28 @@
-using UnityEngine;
 using UnityEditor;
-using System.Collections;
-using System;
+using TictactoeTictactoe.SlidingPuzzle.Runtime;
 
-[CustomEditor(typeof(PuzzleCameraResolution))]
-public class PuzzleCameraResolutionEditor : Editor
+namespace TictactoeTictactoe.SlidingPuzzle.Editor
 {
-    private PuzzleCameraResolution _puzzleCameraResolution;
-
-    void OnEnable() {
-        _puzzleCameraResolution = target as PuzzleCameraResolution;
-    }
-
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(PuzzleCameraResolution))]
+    public class PuzzleCameraResolutionEditor : UnityEditor.Editor
     {
-        EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Use Device Resolution ");
-            _puzzleCameraResolution.isAutoSize = EditorGUILayout.Toggle(_puzzleCameraResolution.isAutoSize);
-        EditorGUILayout.EndHorizontal();
+        private PuzzleCameraResolution _puzzleCameraResolution;
 
-        EditorGUI.BeginDisabledGroup(_puzzleCameraResolution.isAutoSize);
-            _puzzleCameraResolution.width = EditorGUILayout.IntField("Width", _puzzleCameraResolution.width);
-            _puzzleCameraResolution.height = EditorGUILayout.IntField("Height", _puzzleCameraResolution.height);
-        EditorGUI.EndDisabledGroup();
+        void OnEnable() {
+            _puzzleCameraResolution = target as PuzzleCameraResolution;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField("Use Device Resolution ");
+                _puzzleCameraResolution.isAutoSize = EditorGUILayout.Toggle(_puzzleCameraResolution.isAutoSize);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUI.BeginDisabledGroup(_puzzleCameraResolution.isAutoSize);
+                _puzzleCameraResolution.width = EditorGUILayout.IntField("Width", _puzzleCameraResolution.width);
+                _puzzleCameraResolution.height = EditorGUILayout.IntField("Height", _puzzleCameraResolution.height);
+            EditorGUI.EndDisabledGroup();
+        }
     }
 }

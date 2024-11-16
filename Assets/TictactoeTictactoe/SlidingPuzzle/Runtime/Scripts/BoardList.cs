@@ -32,17 +32,19 @@ namespace TictactoeTictactoe.SlidingPuzzle.Runtime
         //특정 버튼을 누르면 활성화가 가능하게 하는 함수..
         public void ActiveBoard(GameObject btn, bool onOff = true)
         {
-            //타일 배열을 순회하면서 어떤 타일의 어떤 버튼인지 확인하기...
+            if (puzzleManager.GetIsShuffle())
+            {
+                return;
+            }
 
+            //타일 배열을 순회하면서 어떤 타일의 어떤 버튼인지 확인하기...
             for (int i = 0; boards.Length > i; i++)
             {
                 Board board = boards[i].Board.GetComponentInChildren<Board>();
-                if (puzzleManager.GetIsShuffle())
+                if (boards[i].Board.activeSelf == true)
                 {
-                    return;
+                    boards[i].Board.SetActive(false);
                 }
-                
-                boards[i].Board.SetActive(false);
                 if (boards[i].Button == btn)
                 {
                     Debug.Log("섞습니다..");

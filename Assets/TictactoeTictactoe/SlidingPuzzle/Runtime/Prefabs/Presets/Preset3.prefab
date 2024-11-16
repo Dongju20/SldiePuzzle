@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TilePrefab: {fileID: 8919552271281381396, guid: ba0e7d16a9ace88448a5bbddac06170b, type: 3}
-  size: 3
+  size: 2
   shuffleCount: 5
 --- !u!114 &8278514692602823825
 MonoBehaviour:
